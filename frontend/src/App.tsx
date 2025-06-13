@@ -1,0 +1,24 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Dashboard from './pages/Dashboard';
+import Portfolios from './pages/Portfolios';
+import Assets from './pages/Assets';
+import Transactions from './pages/Transactions';
+
+function App() {
+  return (
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/portfolios" element={<Portfolios />} />
+          <Route path="/assets" element={<Assets />} />
+          <Route path="/transactions" element={<Transactions />} />
+        </Routes>
+      </Layout>
+    </Router>
+  );
+}
+
+export default App;

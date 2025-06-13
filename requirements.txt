@@ -11,5 +11,5 @@ pytest>=8.4.0
 pytest-asyncio>=1.0.0
 httpx>=0.28.1
 yfinance>=0.2.63
-pandas>=2.3.0
+ibis-framework[sqlite]>=10.5.0
 numpy>=2.3.0

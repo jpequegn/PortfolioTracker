@@ -19,3 +19,8 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+def get_db_url() -> str:
+    """Get the database URL for use with other database clients like ibis"""
+    return settings.database_url

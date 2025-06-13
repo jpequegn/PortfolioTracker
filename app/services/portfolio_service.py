@@ -6,56 +6,18 @@ from app.crud.holding import holding
 from app.crud.transaction import transaction
 from app.models.transaction import TransactionType
 from app.schemas.transaction import TransactionCreate
+from app.services.analytics_service import AnalyticsService
 
 
 class PortfolioService:
     @staticmethod
     def calculate_portfolio_value(db: Session, portfolio_id: int) -> Dict:
-        """Calculate total portfolio value and performance metrics"""
-        holdings = holding.get_by_portfolio(db, portfolio_id=portfolio_id)
-        
-        total_value = Decimal("0")
-        total_cost = Decimal("0")
-        asset_breakdown = []
-        
-        for holding_obj in holdings:
-            if holding_obj.asset.current_price:
-                current_value = holding_obj.quantity * holding_obj.asset.current_price
-                cost_basis = holding_obj.quantity * holding_obj.average_cost
-                
-                gain_loss = current_value - cost_basis
-                gain_loss_percent = (gain_loss / cost_basis * 100) if cost_basis > 0 else Decimal("0")
-                
-                asset_breakdown.append({
-                    "asset": {
-                        "id": holding_obj.asset.id,
-                        "symbol": holding_obj.asset.symbol,
-                        "name": holding_obj.asset.name,
-                        "asset_type": holding_obj.asset.asset_type
-                    },
-                    "quantity": holding_obj.quantity,
-                    "average_cost": holding_obj.average_cost,
-                    "current_price": holding_obj.asset.current_price,
-                    "current_value": current_value,
-                    "cost_basis": cost_basis,
-                    "gain_loss": gain_loss,
-                    "gain_loss_percent": gain_loss_percent
-                })
-                
-                total_value += current_value
-                total_cost += cost_basis
-        
-        total_gain_loss = total_value - total_cost
-        total_gain_loss_percent = (total_gain_loss / total_cost * 100) if total_cost > 0 else Decimal("0")
-        
-        return {
-            "portfolio_id": portfolio_id,
-            "total_value": total_value,
-            "total_cost": total_cost,
-            "total_gain_loss": total_gain_loss,
-            "total_gain_loss_percent": total_gain_loss_percent,
-            "holdings": asset_breakdown
-        }
+        """
+        Calculate total portfolio value and performance metrics using ibis for efficient SQL operations.
+        This method now uses the AnalyticsService for database-driven calculations.
+        """
+        analytics = AnalyticsService()
+        return analytics.get_portfolio_value_analysis(portfolio_id)
 
     @staticmethod
     def process_transaction(db: Session, transaction_data: TransactionCreate) -> Dict:
@@ -118,48 +80,27 @@ class PortfolioService:
 
     @staticmethod
     def get_portfolio_diversification(db: Session, portfolio_id: int) -> Dict:
-        """Calculate portfolio diversification by asset type and individual holdings"""
-        holdings = holding.get_by_portfolio(db, portfolio_id=portfolio_id)
-        
-        total_value = Decimal("0")
-        type_breakdown = {}
-        asset_breakdown = []
-        
-        for holding_obj in holdings:
-            if holding_obj.asset.current_price:
-                current_value = holding_obj.quantity * holding_obj.asset.current_price
-                total_value += current_value
-                
-                # Asset type breakdown
-                asset_type = holding_obj.asset.asset_type.value
-                if asset_type not in type_breakdown:
-                    type_breakdown[asset_type] = Decimal("0")
-                type_breakdown[asset_type] += current_value
-                
-                asset_breakdown.append({
-                    "asset": {
-                        "symbol": holding_obj.asset.symbol,
-                        "name": holding_obj.asset.name,
-                        "asset_type": asset_type
-                    },
-                    "value": current_value
-                })
-        
-        # Calculate percentages
-        type_percentages = {}
-        for asset_type, value in type_breakdown.items():
-            type_percentages[asset_type] = (value / total_value * 100) if total_value > 0 else Decimal("0")
-        
-        asset_percentages = []
-        for asset in asset_breakdown:
-            percentage = (asset["value"] / total_value * 100) if total_value > 0 else Decimal("0")
-            asset_percentages.append({
-                **asset,
-                "percentage": percentage
-            })
-        
-        return {
-            "total_value": total_value,
-            "by_asset_type": type_percentages,
-            "by_asset": asset_percentages
-        }
+        """
+        Calculate portfolio diversification using ibis for efficient SQL aggregations.
+        This method now uses the AnalyticsService for database-driven calculations.
+        """
+        analytics = AnalyticsService()
+        return analytics.get_portfolio_diversification_analysis(portfolio_id)
+    
+    @staticmethod
+    def get_portfolio_performance_metrics(db: Session, portfolio_id: int) -> Dict:
+        """
+        Get advanced portfolio performance metrics using ibis.
+        This is a new method that provides additional analytics capabilities.
+        """
+        analytics = AnalyticsService()
+        return analytics.get_portfolio_performance_metrics(portfolio_id)
+    
+    @staticmethod
+    def get_asset_allocation_analysis(db: Session, portfolio_id: int) -> Dict:
+        """
+        Perform detailed asset allocation analysis using ibis.
+        This is a new method that provides sector and geographic diversification insights.
+        """
+        analytics = AnalyticsService()
+        return analytics.get_asset_allocation_analysis(portfolio_id)

@@ -1,0 +1,237 @@
+INFO:     Will watch for changes in these directories: ['/workspace/PortfolioTracker']
+INFO:     Uvicorn running on http://0.0.0.0:12000 (Press CTRL+C to quit)
+INFO:     Started reloader process [10699] using WatchFiles
+INFO:     Started server process [10707]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:57622 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57630 - "GET /api/v1/portfolios/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57644 - "GET /api/v1/portfolios/1/performance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58684 - "GET /api/v1/assets/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58694 - "GET /api/v1/assets/lookup/AAPL HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'test_ibis_analytics.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [10707]
+INFO:     Started server process [10975]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_ibis_analytics.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [10975]
+INFO:     Started server process [11491]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:49220 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49222 - "GET /portfolios/ HTTP/1.1" 404 Not Found
+WARNING:  WatchFiles detected changes in 'test_ibis_analytics.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [11491]
+INFO:     Started server process [11753]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_ibis_analytics.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [11753]
+INFO:     Started server process [12003]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_ibis_analytics.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [12003]
+INFO:     Started server process [12009]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_ibis_analytics.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [12009]
+INFO:     Started server process [12259]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_ibis_analytics.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [12259]
+INFO:     Started server process [12265]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:44474 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44490 - "GET /api/v1/portfolios/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44492 - "GET /api/v1/portfolios/1/performance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44502 - "GET /api/v1/portfolios/1/diversification HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44514 - "GET /api/v1/portfolios/1/analytics/performance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44530 - "GET /api/v1/portfolios/1/analytics/allocation HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/fastapi/routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/starlette/concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/anyio/to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/PortfolioTracker/app/api/endpoints/portfolios.py", line 126, in get_asset_allocation_analysis
+    return PortfolioService.get_asset_allocation_analysis(db, portfolio_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/PortfolioTracker/app/services/portfolio_service.py", line 106, in get_asset_allocation_analysis
+    return analytics.get_asset_allocation_analysis(portfolio_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/PortfolioTracker/app/services/analytics_service.py", line 268, in get_asset_allocation_analysis
+    assets.sector,
+    ^^^^^^^^^^^^^
+  File "/openhands/poetry/openhands-ai-5O4_aCHf-py3.12/lib/python3.12/site-packages/ibis/expr/types/relations.py", line 775, in __getattr__
+    raise AttributeError(f"'Table' object has no attribute {key!r}")
+AttributeError: 'Table' object has no attribute 'sector'
+WARNING:  WatchFiles detected changes in 'app/services/analytics_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [12265]
+INFO:     Started server process [12788]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/services/analytics_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [12788]
+INFO:     Started server process [13038]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_ibis_analytics.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [13038]
+INFO:     Started server process [13288]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:45466 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45478 - "GET /api/v1/portfolios/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45494 - "GET /api/v1/portfolios/1/performance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45508 - "GET /api/v1/portfolios/1/diversification HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45510 - "GET /api/v1/portfolios/1/analytics/performance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45512 - "GET /api/v1/portfolios/1/analytics/allocation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35950 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35954 - "GET /api/v1/portfolios/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35958 - "GET /api/v1/portfolios/1/performance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35966 - "GET /api/v1/assets/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35972 - "GET /api/v1/assets/lookup/AAPL HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'test_ibis_migration.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [13288]
+INFO:     Started server process [13834]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:42702 - "GET /api/v1/portfolios/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42706 - "GET /api/v1/portfolios/1/performance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42718 - "GET /api/v1/portfolios/1/diversification HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42722 - "GET /api/v1/portfolios/1/analytics/performance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42734 - "GET /api/v1/portfolios/1/analytics/allocation HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'test_ibis_analytics.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [13834]
+INFO:     Started server process [15155]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_ibis_migration.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15155]
+INFO:     Started server process [15161]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_api.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15161]
+INFO:     Started server process [15397]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/services/analytics_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15397]
+INFO:     Started server process [15417]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/services/portfolio_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15417]
+INFO:     Started server process [15423]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:56548 - "GET /api/v1/portfolios/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56550 - "GET /api/v1/portfolios/1/performance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56556 - "GET /api/v1/portfolios/1/diversification HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56570 - "GET /api/v1/portfolios/1/analytics/performance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56584 - "GET /api/v1/portfolios/1/analytics/allocation HTTP/1.1" 200 OK

@@ -3,7 +3,6 @@
 Simple test script to verify the API is working
 """
 import requests
-import json
 
 BASE_URL = "http://localhost:12000/api/v1"
 

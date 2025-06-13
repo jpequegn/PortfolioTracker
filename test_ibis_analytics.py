@@ -4,7 +4,6 @@ Test script for the new ibis-based analytics endpoints
 """
 
 import requests
-import json
 
 BASE_URL = "http://localhost:12000"
 

@@ -1,7 +1,5 @@
-from typing import Dict, List
-from decimal import Decimal
+from typing import Dict
 from sqlalchemy.orm import Session
-from app.crud.portfolio import portfolio
 from app.crud.holding import holding
 from app.crud.transaction import transaction
 from app.models.transaction import TransactionType

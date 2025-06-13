@@ -1,7 +1,6 @@
 import ibis
-from typing import Dict, List, Optional
+from typing import Dict
 from decimal import Decimal
-from sqlalchemy.orm import Session
 from app.core.database import get_db_url
 
 

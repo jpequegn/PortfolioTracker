@@ -5,7 +5,6 @@ and providing accurate results for portfolio analytics.
 """
 
 import requests
-import json
 from decimal import Decimal
 
 BASE_URL = "http://localhost:12000"

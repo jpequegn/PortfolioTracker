@@ -1,6 +1,6 @@
-# Portfolio Tracker Backend
+# Portfolio Tracker
 
-A comprehensive Python backend for portfolio tracking application that allows you to store and track performance of stocks, bonds, ETFs, and cash holdings.
+A comprehensive full-stack portfolio tracking application that allows you to store and track performance of stocks, bonds, ETFs, and cash holdings. Built with a modern Python FastAPI backend and React TypeScript frontend.
 
 ## Features
 
@@ -14,6 +14,7 @@ A comprehensive Python backend for portfolio tracking application that allows yo
 
 ## Technology Stack
 
+### Backend
 - **FastAPI**: Modern, fast web framework for building APIs
 - **SQLAlchemy**: SQL toolkit and ORM
 - **Pydantic**: Data validation using Python type annotations
@@ -21,7 +22,30 @@ A comprehensive Python backend for portfolio tracking application that allows yo
 - **yfinance**: Yahoo Finance API for real-time price data
 - **Uvicorn**: ASGI server for running the application
 
+### Frontend
+- **React 19**: Modern React with latest features
+- **TypeScript**: Type-safe JavaScript development
+- **Tailwind CSS**: Utility-first CSS framework
+- **React Router**: Client-side routing
+- **Recharts**: Beautiful charts and data visualization
+- **Axios**: HTTP client for API communication
+- **Lucide React**: Beautiful icon library
+
+### Testing
+- **pytest**: Python testing framework
+- **pytest-cov**: Coverage reporting
+- **FastAPI TestClient**: API testing utilities
+- **React Testing Library**: Frontend component testing
+- **Jest**: JavaScript testing framework
+
 ## Installation
+
+### Prerequisites
+- Python 3.8+
+- Node.js 16+
+- npm or yarn
+
+### Backend Setup
 
 1. Clone the repository:
 ```bash
@@ -29,35 +53,78 @@ git clone <repository-url>
 cd PortfolioTracker
 ```
 
-2. Install dependencies:
+2. Create and activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install Python dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Set up environment variables:
+4. Set up environment variables (optional):
 ```bash
 cp .env.example .env
 # Edit .env with your configuration
 ```
 
+### Frontend Setup
+
+1. Navigate to the frontend directory:
+```bash
+cd frontend
+```
+
+2. Install Node.js dependencies:
+```bash
+npm install
+```
+
+3. Return to the project root:
+```bash
+cd ..
+```
+
 ## Quick Start
+
+### Option 1: Full Stack Development
+
+1. **Start the backend server** (in one terminal):
+```bash
+python main.py
+```
+
+2. **Start the frontend development server** (in another terminal):
+```bash
+cd frontend
+npm start
+```
+
+3. **Access the application**:
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:12000
+- API Documentation: http://localhost:12000/docs
+
+### Option 2: Backend Only
 
 1. **Create sample data** (optional):
 ```bash
 python create_sample_data.py
 ```
 
-2. **Start the server**:
+2. **Start the backend server**:
 ```bash
 python main.py
 ```
 
-The API will be available at:
+3. **Access the API**:
 - Main API: http://localhost:12000
 - Interactive docs: http://localhost:12000/docs
 - ReDoc: http://localhost:12000/redoc
 
-3. **Test the API**:
+4. **Test the API**:
 ```bash
 python test_api.py
 ```
@@ -188,11 +255,115 @@ Environment variables in `.env`:
 - `ALPHA_VANTAGE_API_KEY`: API key for Alpha Vantage (optional)
 - `DEBUG`: Enable debug mode
 
+## Testing
+
+The project includes comprehensive test suites for both backend and frontend.
+
+### Backend Tests
+
+Run all backend tests:
+```bash
+python run_tests.py
+```
+
+Or run specific test types:
+```bash
+# Unit tests only
+pytest tests/unit/ -v
+
+# Integration tests only
+pytest tests/integration/ -v
+
+# With coverage report
+pytest tests/ --cov=app --cov-report=term-missing
+
+# Run specific test file
+pytest tests/unit/test_portfolios.py -v
+```
+
+### Frontend Tests
+
+```bash
+cd frontend
+npm test
+```
+
+### Test Structure
+
+```
+tests/
+├── conftest.py              # Test configuration and fixtures
+├── unit/                    # Unit tests
+│   ├── test_portfolios.py   # Portfolio endpoint tests
+│   ├── test_assets.py       # Asset endpoint tests
+│   ├── test_transactions.py # Transaction endpoint tests
+│   ├── test_holdings.py     # Holdings endpoint tests
+│   └── test_services.py     # Service layer tests
+└── integration/             # Integration tests
+    └── test_portfolio_workflow.py  # End-to-end workflow tests
+
+frontend/src/components/__tests__/  # Frontend component tests
+```
+
+### Test Coverage
+
+The test suite covers:
+- ✅ All API endpoints (CRUD operations)
+- ✅ Business logic and calculations
+- ✅ Error handling and edge cases
+- ✅ Database operations
+- ✅ Service layer functionality
+- ✅ Integration workflows
+- ✅ Frontend component rendering
+
+### Testing Demo
+
+To see the testing capabilities in action:
+```bash
+python demo_tests.py
+```
+
+This will demonstrate:
+- Test infrastructure setup
+- Basic test execution
+- Test structure overview
+- Coverage capabilities
+
 ## Development
 
-### Running Tests
+### Backend Development
+
+1. **Activate virtual environment**:
 ```bash
-pytest
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+2. **Install development dependencies**:
+```bash
+pip install -r requirements.txt
+```
+
+3. **Run the development server**:
+```bash
+python main.py
+```
+
+### Frontend Development
+
+1. **Start development server**:
+```bash
+cd frontend
+npm start
+```
+
+2. **Build for production**:
+```bash
+npm run build
+```
+
+3. **Run frontend tests**:
+```bash
+npm test
 ```
 
 ### Database Migrations
@@ -213,13 +384,53 @@ alembic upgrade head
 5. Set up reverse proxy (nginx)
 6. Configure SSL/TLS
 
+## Project Structure
+
+```
+PortfolioTracker/
+├── app/                     # Backend application
+│   ├── api/                 # API routes and endpoints
+│   ├── core/                # Core configuration and database
+│   ├── crud/                # Database operations
+│   ├── models/              # SQLAlchemy models
+│   ├── schemas/             # Pydantic schemas
+│   └── services/            # Business logic services
+├── frontend/                # React frontend application
+│   ├── public/              # Static assets
+│   ├── src/
+│   │   ├── components/      # React components
+│   │   ├── pages/           # Page components
+│   │   ├── services/        # API service layer
+│   │   └── App.tsx          # Main app component
+│   └── package.json         # Frontend dependencies
+├── tests/                   # Backend test suite
+│   ├── unit/                # Unit tests
+│   ├── integration/         # Integration tests
+│   └── conftest.py          # Test configuration
+├── main.py                  # Backend entry point
+├── requirements.txt         # Python dependencies
+├── pytest.ini              # Test configuration
+└── run_tests.py             # Test runner script
+```
+
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Make your changes
-4. Add tests
-5. Submit a pull request
+4. Add tests for your changes
+5. Ensure all tests pass (`python run_tests.py`)
+6. Commit your changes (`git commit -m 'Add amazing feature'`)
+7. Push to the branch (`git push origin feature/amazing-feature`)
+8. Submit a pull request
+
+### Development Guidelines
+
+- Write tests for all new features
+- Follow PEP 8 for Python code
+- Use TypeScript for frontend development
+- Add docstrings to all functions and classes
+- Update documentation for API changes
 
 ## License
 

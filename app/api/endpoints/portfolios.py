@@ -95,3 +95,32 @@ def get_portfolio_diversification(
         raise HTTPException(status_code=404, detail="Portfolio not found")
     
     return PortfolioService.get_portfolio_diversification(db, portfolio_id)
+
+
+@router.get("/{portfolio_id}/analytics/performance")
+def get_portfolio_performance_metrics(
+    portfolio_id: int,
+    db: Session = Depends(get_db)
+):
+    """Get advanced portfolio performance metrics using ibis analytics"""
+    portfolio_obj = portfolio.get(db, id=portfolio_id)
+    if portfolio_obj is None:
+        raise HTTPException(status_code=404, detail="Portfolio not found")
+    
+    # Update prices before calculating metrics
+    PriceService.update_asset_prices(db)
+    
+    return PortfolioService.get_portfolio_performance_metrics(db, portfolio_id)
+
+
+@router.get("/{portfolio_id}/analytics/allocation")
+def get_asset_allocation_analysis(
+    portfolio_id: int,
+    db: Session = Depends(get_db)
+):
+    """Get detailed asset allocation analysis using ibis analytics"""
+    portfolio_obj = portfolio.get(db, id=portfolio_id)
+    if portfolio_obj is None:
+        raise HTTPException(status_code=404, detail="Portfolio not found")
+    
+    return PortfolioService.get_asset_allocation_analysis(db, portfolio_id)

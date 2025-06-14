@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BarChart3, Briefcase, TrendingUp, DollarSign, Settings } from 'lucide-react';
+import { BarChart3, Briefcase, TrendingUp, DollarSign, Settings, LineChart } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,6 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: 'Portfolios', href: '/portfolios', icon: Briefcase },
     { name: 'Assets', href: '/assets', icon: TrendingUp },
     { name: 'Transactions', href: '/transactions', icon: DollarSign },
+    { name: 'Historical Data', href: '/historical', icon: LineChart },
   ];
 
   const isActive = (href: string) => {

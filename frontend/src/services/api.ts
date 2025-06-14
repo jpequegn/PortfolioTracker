@@ -84,6 +84,32 @@ export interface DiversificationData {
   }[];
 }
 
+export interface HistoricalDataPoint {
+  date: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+}
+
+export interface HistoricalData {
+  symbol: string;
+  name: string;
+  currency: string;
+  exchange: string;
+  period: string;
+  interval: string;
+  current_price: number;
+  daily_change: number;
+  daily_change_percent: number;
+  period_change: number;
+  period_change_percent: number;
+  data: HistoricalDataPoint[];
+  data_points: number;
+  error?: string;
+}
+
 // API Functions
 export const portfolioApi = {
   getAll: () => api.get<Portfolio[]>('/portfolios/'),
@@ -104,6 +130,8 @@ export const assetApi = {
   create: (data: Omit<Asset, 'id' | 'created_at' | 'current_price' | 'last_updated'>) => 
     api.post<Asset>('/assets/', data),
   updatePrices: () => api.post('/assets/update-prices'),
+  getHistoricalData: (symbol: string, period: string = '1y', interval: string = '1d') => 
+    api.get<HistoricalData>(`/assets/${symbol}/historical`, { params: { period, interval } }),
 };
 
 export const holdingApi = {

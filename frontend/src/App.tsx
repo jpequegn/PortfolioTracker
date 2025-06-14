@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import Portfolios from './pages/Portfolios';
 import Assets from './pages/Assets';
 import Transactions from './pages/Transactions';
+import HistoricalData from './pages/HistoricalData';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/portfolios" element={<Portfolios />} />
           <Route path="/assets" element={<Assets />} />
           <Route path="/transactions" element={<Transactions />} />
+          <Route path="/historical" element={<HistoricalData />} />
         </Routes>
       </Layout>
     </Router>

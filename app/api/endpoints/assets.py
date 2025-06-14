@@ -134,3 +134,18 @@ def update_asset_prices(
     """Update current prices for assets"""
     PriceService.update_asset_prices(db, asset_ids)
     return {"message": "Asset prices updated successfully"}
+
+
+@router.get("/{symbol}/historical")
+def get_historical_data(
+    symbol: str,
+    period: str = Query("1y", description="Data period (1d, 5d, 1mo, 3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max)"),
+    interval: str = Query("1d", description="Data interval (1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo)")
+):
+    """Get historical market data for a stock symbol"""
+    historical_data = PriceService.get_historical_data(symbol, period, interval)
+    
+    if 'error' in historical_data:
+        raise HTTPException(status_code=404, detail=historical_data['error'])
+    
+    return historical_data

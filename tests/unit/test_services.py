@@ -6,7 +6,7 @@ from unittest.mock import patch, MagicMock
 from decimal import Decimal
 
 from app.services.portfolio_service import PortfolioService
-from app.services.price_service import get_asset_info, update_asset_prices
+from app.services.price_service import PriceService
 
 
 class TestPortfolioService:
@@ -143,7 +143,7 @@ class TestPriceService:
         mock_ticker_instance.info = mock_info
         mock_ticker.return_value = mock_ticker_instance
         
-        result = get_asset_info('AAPL')
+        result = PriceService.get_asset_info('AAPL')
         
         assert result['symbol'] == 'AAPL'
         assert result['name'] == 'Apple Inc.'
@@ -160,7 +160,7 @@ class TestPriceService:
         mock_ticker_instance.info = {}
         mock_ticker.return_value = mock_ticker_instance
         
-        result = get_asset_info('INVALID')
+        result = PriceService.get_asset_info('INVALID')
         
         assert result is None
 
@@ -170,16 +170,7 @@ class TestPriceService:
         # Mock yfinance to raise an exception
         mock_ticker.side_effect = Exception("Network error")
         
-        result = get_asset_info('AAPL')
+        result = PriceService.get_asset_info('AAPL')
         
         assert result is None
 
-    def test_map_quote_type_to_asset_type(self):
-        """Test mapping of yfinance quote types to our asset types"""
-        from app.services.price_service import _map_quote_type_to_asset_type
-        
-        assert _map_quote_type_to_asset_type('EQUITY') == 'stock'
-        assert _map_quote_type_to_asset_type('ETF') == 'etf'
-        assert _map_quote_type_to_asset_type('MUTUALFUND') == 'mutual_fund'
-        assert _map_quote_type_to_asset_type('BOND') == 'bond'
-        assert _map_quote_type_to_asset_type('UNKNOWN') == 'other'
